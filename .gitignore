@@ -1,0 +1,37 @@
+while (true)
+{
+Console.WriteLine("Choose options: ");
+Console.WriteLine("[A]dd or remove soda");
+Console.WriteLine("[C]ontent");
+Console.WriteLine("[P]rice");
+Console.WriteLine("[S]oda");
+Console.WriteLine("[Q]uit");
+
+string MenySelection = Console.ReadLine();
+ if (MenySelection == "A" || MenySelection =="a")
+{ 
+Console.WriteLine("If you want to add soda, type A. If you want to remove soda, type R");
+//Random code to add and remove soda
+}
+else if (meny selection for C)
+{Console.writeLine("To view the content, write C.");
+//Code to view the content of sodacrate.
+{
+else if (meny selection for P)
+{ 
+Console.WriteLine("Here are the prices for the soda bottles")
+//Code to display what sodabottles are Worth. For example name = Fanta cost = 10kr type = CocaCola
+}
+else if (Menyselection for S)
+{
+Console.WriteLine("What soda do you want to search for? We have A, B, C")
+//Code for if user input is A, write the price and type and name I guess.
+]
+else if (Meny selection for Q)
+{
+Break;
+}
+else 
+{ Console.WriteLine("Not an avalible input");
+}
+}
