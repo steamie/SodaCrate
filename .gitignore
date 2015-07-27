@@ -168,3 +168,109 @@ else
             type = Console.ReadLine();
             sodas.Add(new soda(name, cost, type));
         }
+------------FINALE-----CODE-----------------------
+
+ static public List<soda> sodas { get; set; }
+        public class soda
+        {
+            public string name { get; private set; }
+            public int cost { get; private set; }
+            public string type { get; private set; }
+
+            public soda(string _name, int _cost, string _type)
+            {
+                name = _name;
+                if (_cost < 0)
+                    cost = 0;
+                else
+                    cost = _cost;
+                type = _type;
+            }
+        }
+        static void Main(string[] args)
+        {
+            ShowMenu();
+        }
+while (true)
+            {
+                Console.WriteLine("Choose options: ");
+                Console.WriteLine("[L]ibrary on sodas");
+                Console.WriteLine("[C]ontent");
+                Console.WriteLine("[P]rice");
+                Console.WriteLine("[S]oda");
+                Console.WriteLine("[Q]uit");
+
+                string MenySelection = Console.ReadLine();
+
+                switch (MenySelection.ToUpper())
+                {
+                    case "L":
+                        Console.WriteLine("This is your soda library, you can add sodas or view them.");
+        private static void ShowMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Select an option:");
+            Console.WriteLine("1- Enter a new soda");
+            Console.WriteLine("2- View items");
+
+            ConsoleKeyInfo info = Console.ReadKey();
+            int selection;
+            int.TryParse(info.KeyChar.ToString(), out selection);
+
+            switch (selection)
+            {
+                case 1:
+                    AddRecord();
+                    ShowMenu();
+                    break;
+                case 2:
+                    ShowRecords();
+                    ShowMenu();
+                    break;
+                default:
+                    ShowMenu();
+                    break;
+            }
+        }
+
+        private static void ShowRecords()
+        {
+            Console.Clear();
+            if (sodas == null)
+                Console.WriteLine("There is no records to show.");
+            else
+            {
+                foreach (soda item in sodas)
+                {
+                    Console.WriteLine("Records#");
+                    Console.WriteLine("Soda Name: {0}, Price: {1}, Type: {2}", item.name, item.cost, item.type );
+                }
+            }
+            Console.WriteLine("Touch a key to return to main menu..");
+            Console.ReadKey();
+        }
+
+                        break;
+
+                    case "C":
+                        Console.writeLine("To view the content, write C.");
+                        //Code to view the content of sodacrate.
+                        break;
+                    case "P":
+                        Console.WriteLine("Here are the prices for the soda bottles")
+                        //Code to display what sodabottles are Worth. For example name = Fanta cost = 10kr type = CocaCola
+                        break;
+                    case "S":
+                        Console.WriteLine("What soda do you want to search for? We have A, B, C")
+                        //Code for if user input is A, write the price and type and name I guess.
+                        break;
+                    case "Q":
+                        Environment.Exit(1);
+                        break;
+
+                    default:
+                        Console.WriteLine("Not an avalible input");
+                        break;
+                }
+
+            }
