@@ -235,8 +235,8 @@ while (true)
             Console.WriteLine("[R]emove soda");
             
             ConsoleKeyInfo info = Console.ReadKey();
-            int selection;
-            int.TryParse(info.KeyChar.ToString(), out selection);
+            int selection;                                            //Om jag itne vet hur man gör med bokstäver I guess
+            int.TryParse(info.KeyChar.ToString(), out selection);   //Ta bort maybe
 
             switch (selection)
             {
@@ -316,28 +316,21 @@ while (true)
                 Console.ReadKey();
             }
         }
+               break;
 
-                        break;
+               case "I":
+            Console.WriteLine("Select an option");
+            Console.WriteLine("[I]tems in sodacrate");
+            Console.WriteLine("[P]rice on sodacrate");
 
-                    case "C":
-                        Console.writeLine("To view the content, write C.");
-                        //Code to view the content of sodacrate.
-                        break;
-                    case "P":
-                        Console.WriteLine("Here are the prices for the soda bottles")
-                        //Code to display what sodabottles are Worth. For example name = Fanta cost = 10kr type = CocaCola
-                        break;
-                    case "S":
-                        Console.WriteLine("What soda do you want to search for? We have A, B, C")
-                        //Code for if user input is A, write the price and type and name I guess.
-                        break;
-                    case "Q":
-                        Environment.Exit(1);
-                        break;
+                    break;
+               case "Q":
+                    Environment.Exit(1);
+                    break;
 
-                    default:
-                        Console.WriteLine("Not an avalible input");
-                        break;
+               default:
+                    Console.WriteLine("Not an avalible input");
+                    break;
                 }
 
             }
