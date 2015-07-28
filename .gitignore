@@ -168,6 +168,28 @@ else
             type = Console.ReadLine();
             sodas.Add(new soda(name, cost, type));
         }
+        private static void RemoveRecord()
+        {
+            if(sodas == null)
+            {
+                Console.WriteLine("There is no record");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Please write the name of Soda to remove: ");
+            string name = Console.ReadLine();
+            if (sodas.Select(x => x.name).Contains(name))
+            {
+                var itemToRemove = sodas.Where(x => x.name.Equals(name)).First();
+                if (itemToRemove != null)
+                    sodas.Remove(itemToRemove);
+            }
+            else
+            {
+                Console.WriteLine("record not found");
+                Console.ReadKey();
+            }
+        }
 ------------FINALE-----CODE-----------------------
 
  static public List<soda> sodas { get; set; }
@@ -210,23 +232,28 @@ while (true)
         {
             Console.Clear();
             Console.WriteLine("Select an option:");
-            Console.WriteLine("1- Enter a new soda");
-            Console.WriteLine("2- View items");
-
+            Console.WriteLine("[V]iew items");
+            Console.WriteLine("[E]nter new soda");
+            Console.WriteLine("[R]emove soda");
+            
             ConsoleKeyInfo info = Console.ReadKey();
             int selection;
             int.TryParse(info.KeyChar.ToString(), out selection);
 
             switch (selection)
             {
-                case 1:
+                case "E":
                     AddRecord();
                     ShowMenu();
                     break;
-                case 2:
+                case "V":
                     ShowRecords();
                     ShowMenu();
                     break;
+                case "R":
+                     RemoveRecord();
+                     ShowMenu();
+                     break;
                 default:
                     ShowMenu();
                     break;
@@ -248,6 +275,48 @@ while (true)
             }
             Console.WriteLine("Touch a key to return to main menu..");
             Console.ReadKey();
+        }
+                private static void AddRecord()
+        {
+            string name = "";
+            int cost = 0;
+            string type = "";
+            if (sodas == null) sodas = new List<soda>();
+            Console.WriteLine("Please enter name: ");
+            name = Console.ReadLine();
+
+            while(cost ==0)
+            {
+                Console.WriteLine("Please enter price: ");
+                string price = Console.ReadLine();
+                int.TryParse(price, out cost);
+            }
+            
+            Console.WriteLine("Please enter type: ");
+            type = Console.ReadLine();
+            sodas.Add(new soda(name, cost, type));
+        }
+        private static void RemoveRecord()
+        {
+            if(sodas == null)
+            {
+                Console.WriteLine("There is no record");
+                Console.ReadKey();
+                return;
+            }
+            Console.WriteLine("Please write the name of Soda to remove: ");
+            string name = Console.ReadLine();
+            if (sodas.Select(x => x.name).Contains(name))
+            {
+                var itemToRemove = sodas.Where(x => x.name.Equals(name)).First();
+                if (itemToRemove != null)
+                    sodas.Remove(itemToRemove);
+            }
+            else
+            {
+                Console.WriteLine("record not found");
+                Console.ReadKey();
+            }
         }
 
                         break;
