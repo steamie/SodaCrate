@@ -240,12 +240,12 @@ while (true)
 
             switch (selection)
             {
-                case "E":
-                    AddRecord();
-                    ShowMenu();
-                    break;
                 case "V":
                     ShowRecords();
+                    ShowMenu();
+                    break;
+                case "E":
+                    AddRecord();
                     ShowMenu();
                     break;
                 case "R":
