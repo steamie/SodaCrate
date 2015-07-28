@@ -215,11 +215,9 @@ else
         }
 while (true)
             {
-                Console.WriteLine("Choose options: ");
-                Console.WriteLine("[L]ibrary on sodas");
-                Console.WriteLine("[C]ontent");
-                Console.WriteLine("[P]rice");
-                Console.WriteLine("[S]oda");
+                Console.WriteLine("Select an option");
+                Console.WriteLine("[L]ibrary on sodas, add and remove.");
+                Console.WriteLine("[I]nformation on sodacrate");    //Ska ha pris på läskbacken och kunna kolla vad som finns
                 Console.WriteLine("[Q]uit");
 
                 string MenySelection = Console.ReadLine();
@@ -227,11 +225,11 @@ while (true)
                 switch (MenySelection.ToUpper())
                 {
                     case "L":
-                        Console.WriteLine("This is your soda library, you can add sodas or view them.");
+                        Console.WriteLine("This is your soda library, you can add/remove sodas or view them.");
         private static void ShowMenu()
         {
             Console.Clear();
-            Console.WriteLine("Select an option:");
+            Console.WriteLine("Select an option");
             Console.WriteLine("[V]iew items");
             Console.WriteLine("[E]nter new soda");
             Console.WriteLine("[R]emove soda");
