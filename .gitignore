@@ -333,4 +333,80 @@ while (true)
                     break;
                 }
 
-            }
+ ------------------------------------------------------------------------------------------ Object orienterat bajs
+ Class läs
+ Class sodacrate
+ Class program
+------------------------------- Class Läsk -----------------------
+public class soda
+{
+ private string name;
+ private int cost;
+ private string type;
+ 
+ public soda(string _name, int _cost, string _type)
+ {
+ name = _name;
+ if (_cost < 0)
+  cost = 0;
+ else
+  cost = _cost;
+ type = _type;
+ }
+public void sort()
+{
+ for (int i = 0; i < max; i++)
+ {
+  int nrLeft = max - i;
+  
+  for (int j = 0; j < nrLeft; j++)
+  {
+   if (pos[j] > pos[j+1]) //pos for position, dunno what to name yet.
+   {
+    int temp = pos[j];
+    pos[j] = pos[j+1];
+    pos[j+1] = temp;
+   }
+  }
+ }
+}
+public override string ToString
+{
+ return string.Format("{0} kostar {1}kr och är en {2}", name, cost, type);
+}
+--------------------------------- Class sodacrate -----------------------
+public class sodacrate
+{
+ private int number;
+ private soda[] sodas;
+ 
+ public sodacrate(int _number)
+ {
+  number = _number;
+  sodas = new soda[25];
+ }
+ public void add_soda(int pos, string _name, int _cost, string _type)
+ {
+  sodas[pos] = new soda(_name, _cost, _type);
+ }
+ public void show_sodas()
+ {
+  foreach (var tmp_soda in sodas)
+   if (tmp_soda != null)
+    Console.WriteLine(tmp_soda);
+   else
+    Console.WriteLine("Empty spot");
+----------------------- Class program ------------------------
+Class program
+{
+ static void Main(string[] args)
+ {
+  sodacrate One = new sodacrate(1);
+  One.add_soda(0, "Fanta", 10, "Soda");
+  One.add_soda(1, "Spendrups", 15, "Light beer");
+  One.add_soda(2, "Carlsberg", 20, "Beer");
+  One.add_soda(3, "Bonaqua Pear", 5, "Water");
+  One.show_sodas();
+  Console.ReadKey();
+ }
+}
