@@ -483,3 +483,77 @@ joe.AddDog("Doggy", benji);
 
 james.AddDog("Rover", pooch);
 joe.AddDog("Buddy", pooch);  // won't add as the preset limit has been reached.
+--------------------------------------------------------------------------
+public class Sodacrate
+{
+   private string name;
+   private List<Hashtable> sodas;
+   private int limit;
+
+   public Boss(string name, int sodaLimit)
+   {
+      this.name = name;
+      this.sodas = new List<Hashtable>();
+      this.limit = sodaLimit; 
+   }
+
+   public string Name { get { return this.name; } }
+
+   public void AddSoda(string nickname, Soda soda)
+   {
+      if (!this.sodas.Contains(nickname) && !this.sodas.Count == limit)
+      {
+         this.sodas.Add(nickname, soda);
+         soda.AddSodacrate(this);
+      } 
+   }
+
+   public void RemoveSoda(string nickname)
+   {
+       this.sodas.Remove(nickname);
+       Soda.RemoveSodacrate(this);
+   }
+
+   public void Hashtable Sodas { get { return this.sodas; } }
+}
+
+public class Soda
+{
+   private string name;
+   private List<Sodacrate> sodacrates;
+
+   public Soda(string name, int cost, string type)
+   {
+      this.name = name;
+      this.cost = cost;
+      this.sodacrates = new List<Sodacrate>();
+   }
+
+   public string Name { get { return this.name; } }
+   public int Cost { get { return this.cost; } }
+   public void AddSodacrate(Sodacrate sodacrate)
+   {
+      if (!this.sodacrates.Contains(sodacrate))
+      {
+          this.sodacrates.Add(sodacrate);
+      }
+   }
+
+   public void RemoveSodacrate(Sodacrate sodacrate)
+   {
+      this.sodacrates.Remove(sodacrate);
+   }  
+
+   public ReadOnlyCollection<Sodacrate> Sodacrates { get { return new ReadOnlyCollection<Sodacrate>(this.sodacrates); } }
+}
+var one = new Sodacrate("One", ConfigurationManager.AppSettings["SodasPerSodacrate"]);
+var two = new Sodacrate("Two", ConfigurationManager.AppSettings["SodasPerSodacrate"]);
+
+var fanta = new Soda("Fanta", 10);
+var bonaquap = new Soda("Bonaqua Pear", 10);
+
+one.AddSoda("Soda:", fanta);
+two.AddSoda("Soda:", fanta);
+
+one.AddSoda("Water:", bonaquap);
+two.AddSoda("Water:", bonaquap);
