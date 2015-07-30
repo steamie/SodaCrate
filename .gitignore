@@ -557,3 +557,83 @@ two.AddSoda("Soda:", fanta);
 
 one.AddSoda("Water:", bonaquap);
 two.AddSoda("Water:", bonaquap);
+------------------------- el finale ---------------------
+public class soda
+static public list<soda> sodas { get; set; }
+{ 
+ public string name { get; private set; } 
+ public int cost { get; private set; } 
+ public string type { get; private set; }
+ 
+ public soda(string _name, int _cost, string _type) 
+ {
+  name = _name; 
+  if (_cost < 0) 
+   cost = 0; 
+  else 
+   cost = _cost; 
+  type = _type; 
+ } 
+
+private static void AddRecord() 
+ { 
+  string name = ""; 
+  int cost = 0; 
+  string type = ""; 
+  if (sodas == null) sodas = new List<soda>(); 
+   Console.WriteLine("Please enter name: "); 
+  name = Console.ReadLine(); 
+ 
+ while(cost ==0) 
+ { 
+  Console.WriteLine("Please enter price: "); 
+  string price = Console.ReadLine(); 
+  int.TryParse(price, out cost); 
+ } 
+ Console.WriteLine("Please enter type: "); 
+ type = Console.ReadLine(); 
+ sodas.Add(new soda(name, cost, type)); 
+ }
+
+private static void RemoveRecord() 
+{ 
+if(sodas == null) 
+ { 
+ Console.WriteLine("There is no record"); 
+ Console.ReadKey(); 
+ return; 
+ } 
+Console.WriteLine("Please write the name of Soda to remove: "); 
+string name = Console.ReadLine(); 
+ if (sodas.Select(x => x.name).Contains(name)) 
+ { 
+  var itemToRemove = sodas.Where(x => x.name.Equals(name)).First(); 
+   if (itemToRemove != null) 
+   sodas.Remove(itemToRemove); 
+ } 
+  else 
+  { 
+   Console.WriteLine("record not found"); 
+   Console.ReadKey(); 
+  } 
+ }
+ ----------------------------------- soda crate nu då --------------------------
+public class sodacrate
+{
+ private string name;
+ private list<soda> läsk;
+ 
+ public husse(string _name)
+ {
+  name = _name;
+  läsk = new list<soda>();
+ }
+ public void add_SodaToCrate(string _name, int _cost, string _type)
+ {
+  läsk.Add(new soda(_name, _cost, _type));
+ }
+ public void show_SodaInCrate
+ {
+ Bajs kod, I think Im gucci
+ }
+}
