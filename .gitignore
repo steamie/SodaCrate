@@ -804,3 +804,152 @@ class program
                 int cost = 0;
                 string type = "";
                 sodas.Add(new soda(name, cost, type));
+---------------------------------------------------------------------------------------------------------------------------
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ShowMenu();
+        }
+        private static void ShowMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("Välj ett alternativ:");
+            Console.WriteLine("[1] Lägg till ny läsk");
+            Console.WriteLine("[2] Ta bort läsk");
+            Console.WriteLine("[3] Visa läskback");
+            Console.WriteLine("[4] Byt läsk i läskbacke");
+            Console.WriteLine("[5] Sortera läskbacken");
+            Console.WriteLine("[6] Byt plats på läsk i läskbacken");
+
+            ConsoleKeyInfo info = Console.ReadKey();
+            int selection;
+            int.TryParse(info.KeyChar.ToString(), out selection);
+
+            switch (selection)
+            {
+                case 1:
+                    add_soda();
+                    ShowMenu();
+                    break;
+                case 2:
+                    remove_soda();
+                    ShowMenu();
+                    break;
+                case 3:
+                    show_sodas();
+                    ShowMenu();
+                    break;
+                case 4:
+                    change_sodas();
+                    ShowMenu();
+                    break;
+                case 5:
+                    sort_sodas();
+                    ShowMenu();
+                    break;
+                case 6:
+                    swap_sodas();
+                    ShowMenu();
+                    break;
+                default:
+                    ShowMenu();
+                    break;
+            }
+        } 
+    }
+
+        public class sodacrate
+        {
+            private int number;
+            private List<soda> sodas;
+
+        public void add_soda(string _name, int _cost, string _type)
+        {
+            string name = "";
+            int cost = 0;
+            string type = "";
+            sodas.Add(new soda(name, cost, type));
+
+
+                Console.WriteLine("Namn:");
+                name = Console.ReadLine();
+
+                while (cost == 0)
+                {
+                    Console.WriteLine("Pris: ");
+                    string price = Console.ReadLine();
+                    int.TryParse(price, out cost);
+                }
+
+                Console.WriteLine("Typ: ");
+                type = Console.ReadLine();
+
+            }
+            public void remove_soda()
+            {
+                if (sodas == null)
+                {
+                    Console.WriteLine("Läskbacken är tom!");
+                    Console.ReadKey();
+                    return;
+                }
+                Console.WriteLine("Namn på läsk:");
+                string name = Console.ReadLine();
+                if (sodas.Select(x => x.name).Contains(name))
+                {
+                var itemToRemove = sodas.Where(x => x.name.Equals(name)).First();
+                if (itemToRemove != null)
+                    sodas.Remove(itemToRemove);
+                }
+                else
+                {
+                Console.WriteLine("Inte funnen");
+                Console.ReadKey();
+                }
+        }
+        public void change_sodas()
+        {
+            Console.WriteLine("Position: ");
+            string pos2 = Console.ReadLine();
+            int.TryParse(pos2, out pos);
+            Console.WriteLine("Namn på läsk du vill lägga in:");
+            string name = Console.ReadLine();
+            string[] sodas2 = sodas.Select(x => x.Replace(pos, name)).ToArray();
+        }
+            public void show_sodas()
+            {
+                foreach (var tmp_soda in sodas)
+                    if (tmp_soda != null)
+                        Console.WriteLine(tmp_soda);
+                    else
+                        Console.WriteLine("Tom plats");
+            }
+        public void sort_sodas()
+        {
+            var sortedCostList = sodas.OrderBy(si => si.cost).ToArray();
+            sodas.Sort(new Comparison<sodacrate>((x, y) => int.Compare(x.cost, y.cost)));
+        }
+        public void swap_sodas()
+        {
+           // Dont know how to it yet... :(
+        }
+
+        }
+        public class soda
+        {
+            public string name { get; private set; }
+            public int cost { get; private set; }
+            public string type { get; private set; }
+
+            public soda(string _name, int _cost, string _type)
+            {
+                name = _name;
+                if (_cost < 0)
+                    cost = 0;
+                else
+                    cost = _cost;
+                type = _type;
+            }
+        }
+    }
