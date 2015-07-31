@@ -637,3 +637,161 @@ public class sodacrate
  Bajs kod, I think Im gucci
  }
 }
+
+
+
+
+
+
+class program
+{
+
+    static public List<soda> sodas { get; set; }
+    public class soda
+    {
+        public int pos { get; private set; }
+        public string name { get; private set; }
+        public int cost { get; private set; }
+        public string type { get; private set; }
+
+        public soda(int _pos, string _name, int _cost, string _type)
+        {
+            pos = _pos;
+            name = _name;
+            if (_cost < 0)
+                cost = 0;
+            else
+                cost = _cost;
+            type = _type;
+        }
+    }
+    static void Main(string[] args)
+    {
+        ShowMenu();
+    }
+    private static void ShowMenu()
+    {
+        Console.Clear();
+        Console.WriteLine("Välj ett alternativ:");
+        Console.WriteLine("[1] Lägg till ny läsk");
+        Console.WriteLine("[2] Ta bort läsk");
+        Console.WriteLine("Sortera läskbacken");
+        Console.WriteLine("Byt plats på läsk...?");
+        Console.WriteLine("[4] Titta i läskbacken");
+
+        ConsoleKeyInfo info = Console.ReadKey();
+        int selection;
+        int.TryParse(info.KeyChar.ToString(), out selection);
+
+        switch (selection)
+        {
+            case 1:
+                AddRecord();
+                ShowMenu();
+                break;
+            case 2:
+                RemoveRecord();
+                ShowMenu();
+                break;
+            case 3:
+                SortRecord();
+                ShowMenu();
+                break;
+            case 4:
+                ShowRecords();
+                ShowMenu();
+                break;
+            default:
+                ShowMenu();
+                break;
+        }
+    }
+    private static void ShowRecords()
+    {
+        Console.Clear();
+        if (sodas == null)
+            Console.WriteLine("Finns ingen läsk att visa");
+        else
+        {
+            foreach (soda item in sodas)
+            {
+                Console.WriteLine("Position: {0}, Dryck: {1}, Pris: {2}, Typ: {3}", item.pos, item.name, item.cost, item.type);
+            }
+        }
+        Console.WriteLine("Tryck för att komma till huvudmenyn");
+        Console.ReadKey();
+    }
+    private static void AddRecord()
+    {
+        Console.Clear();
+        int pos = 0;
+        string name = "";
+        int cost = 0;
+        string type = "";
+        if (sodas == null) sodas = new List<soda>();
+        while (pos == 0)
+        {
+            Console.WriteLine("Position: ");
+            string position = Console.ReadLine();
+            int.TryParse(position, out pos);
+        }
+        Console.WriteLine("Namn: ");
+        name = Console.ReadLine();
+
+        while (cost == 0)
+        {
+            Console.WriteLine("Pris: ");
+            string price = Console.ReadLine();
+            int.TryParse(price, out cost);
+        }
+
+
+        Console.WriteLine("Typ: ");
+        type = Console.ReadLine();
+
+        sodas.Add(new soda(pos, name, cost, type));
+
+    }
+    private static void RemoveRecord()
+    {
+        Console.Clear();
+        if (sodas == null)
+        {
+            Console.WriteLine("Läskbacken är tom!");
+            Console.ReadKey();
+            return;
+        }
+        Console.WriteLine("Namn på läsk");
+        string name = Console.ReadLine();
+        if (sodas.Select(x => x.name).Contains(name))
+        {
+            var itemToRemove = sodas.Where(x => x.name.Equals(name)).First();
+            if (itemToRemove != null)
+                sodas.Remove(itemToRemove);
+        }
+        else
+        {
+            Console.WriteLine("INte funnen");
+            Console.ReadKey();
+        }
+    }
+    private static void SortRecord()
+    {
+        Console.Clear();
+        {
+            for (int i = 0; i < 25; i++)
+            {
+                int nrLeft = 25 - i;
+                for (int j = 0; j < nrLeft; j++)
+                {
+                    if (position[j] > pos[j + 1])
+                    {
+                        int temp = pos[j];
+                        pos[j] = pos[j + 1];
+                        pos[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    }
+}
