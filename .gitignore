@@ -795,3 +795,12 @@ class program
         }
     }
 }
+
+            sodas = new List<soda>();
+            }
+            public void add_soda(int pos, string _name, int _cost, string _type)
+            {
+                string name = "";
+                int cost = 0;
+                string type = "";
+                sodas.Add(new soda(name, cost, type));
